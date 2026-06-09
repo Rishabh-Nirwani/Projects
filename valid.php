@@ -1,112 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=DynaPuff:wght@500&family=Josefin+Sans:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab&family=Sedgwick+Ave+Display&display=swap');
+<?php
+if(isset($_POST['a1']))
+{
+	$us=$_POST['username'];
+	$ps=$_POST['password'];
+	
+		$con=mysqli_connect("localhost","root","","cms");
+		$q="SELECT * FROM admin WHERE aname='$us' and apass='$ps'";
+		$rs=mysqli_query($con,$q);
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+		if(mysqli_num_rows($rs)===1)
+			{
+				if(!($us))
+					{
+						echo"ENTER USERNAME";
+					}
+				elseif(!($ps))
+					{
+						echo"ENTER PASSWORD";
+					}
+				else
+					{
+						header("Location: adminmain.php" );
+					}
+			}
+		else
+			{
+				echo"INVALID USERNAME AND PASSWORD";
+			} 
+            echo"<link rel='stylesheet' href='style.css'>";    
 }
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('login.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.login {
-    width: 400px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    color: white;
-    border-radius: 10px;
-    padding: 30px 40px;
-}
-
-.login h1 {
-    font-size: 36px;
-    text-align: center;
-}
-
-.login .input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-}
-
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: white;
-    padding: 20px 45px 20px 20px;
-}
-
-.input-box input::placeholder {
-    color: white;
-}
-
-.input-box i {
-    position: absolute;
-    right: 20px;
-    top: 95%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
-
-.login .admin {
-    text-align: center;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-
-.admin a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.admin a:hover {
-    text-decoration: underline;
-}
-
-.login .button {
-    width: 100%;
-    height: 45px;
-    background: white;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
-}
-
-.login .register {
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-}
-
-.register p a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.register a:hover {
-    text-decoration: underline;
- }
+?>

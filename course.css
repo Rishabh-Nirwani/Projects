@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=DynaPuff:wght@500&family=Josefin+Sans:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab&family=Sedgwick+Ave+Display&display=swap');
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .dashboard-header {
+    background-color: rgb(255, 243, 220);
+    color: 2 px solid black;
+    padding: 10px;
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-left: 60px;
+  }
+  .nav-bar {
+    width: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    position: fixed;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  .nav-bar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  .nav-bar a:hover {
+    color: #f1f1f1;
+  }
+  .nav-toggle-btn {
+    padding: 15px;
+    background-color: rgb(255, 243, 220);
+    color: 2 px solid black;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+  }
+  .content {
+    transition: margin-left .5s;
+    padding: 220px;
+    display: flex;
+  }
+  .announcements {
+    flex-grow: 1;
+    background-color: rgb(255, 229, 180);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-left: 20px; /* Ensure this matches the left padding of the content when nav is closed */
+  }
+  .course {
+    flex-grow: 1;
+    background-color: rgb(255, 229, 180);
+    padding: 20px;
+    width: 150px;
+    height: 80px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-left: 20px; /* Ensure this matches the left padding of the content when nav is closed */
+  }
+
+  .course a{
+    text-decoration: none;
+  }
+
+  .announcements a{
+    text-decoration: none;
+  }
+
+  .course h2:hover{
+    text-decoration: underline;
+  }
+
+  .announcements h2:hover{
+    text-decoration: underline;
+  }

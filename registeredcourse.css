@@ -1,0 +1,116 @@
+.course-item {
+    border-bottom: 1px solid #eee;
+    display:inline-flex;
+    padding: 10px 0;
+}
+.course-item:last-child {
+    border-bottom: none;
+}
+h1 {
+    text-align: center;
+    color: 2px solid black;
+}
+.select-container {
+    width: 200px; /* Adjust based on your needs */
+}
+
+select {
+    width: 100%;
+    padding: 9px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-family: inherit; /* This makes the font consistent with the body */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Focus state */
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Hover state */
+select:hover {
+    border-color: #007bff;
+}
+
+/* Disabled state */
+select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+
+
+}
+.info-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    max-width: 320px;
+    margin: 20px auto;
+}
+
+.info-title {
+    color: #333;
+    margin-top: 0;
+}
+
+.info-description {
+    color: #666;
+    line-height: 1.0;
+}
+.info-highlight {
+    font-size: 18px; /* Slightly larger for emphasis */
+    color: #333; /* Darker text color */
+    margin: 10px 10px; /* Spacing for visual separation */
+}
+.info-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 10px 250px;
+    transition: background-color 0.3s ease;
+}
+
+.info-link:hover {
+    background-color: #0056b3;
+}
+
+.highlight {
+    font-weight: bold; /* Make the text bold */
+    color: #d9534f; /* Use a distinct color for highlighting, here's a bootstrap's red for example */
+    padding: 3px 6px; /* Optional: add some padding around the highlight */
+    background-color: #f9f2f4; /* Optional: light background color for the highlight */
+    border-radius: 4px; /* Optional: rounded corners for the background */
+}
+.butto {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 70px 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  
+  transition: all 0.3s ease;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Adding a subtle shadow */
+}
+
+.butto:hover {
+    transform: scale(1.05); /* Scale the button slightly on hover */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Increase the shadow on hover */
+
+  background-color: #015ec2; /* Darker green */
+}
