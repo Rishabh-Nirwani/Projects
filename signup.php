@@ -1,110 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=DynaPuff:wght@500&family=Josefin+Sans:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab&family=Sedgwick+Ave+Display&display=swap');
+<!DOCTYPE html>
+<html>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+<head>
+	<title>User Signup Page</title>
+	<link rel="stylesheet" href="signup.css">
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+<div class="signup">
+	<h1>User Signup</h1>
+	<form action="signup.php" method="post">
+		<div class="input-box">
+			<div class="input-field">
+				<input type="text" placeholder="UserName" id="name" name="name" required pattern="[A-Za-z]+"title="only alphabet"><i class='bx bxs-user'></i>
+			</div>
+			<div class="input-field">
+				<input type="email" placeholder="Email" id="email" name="email" required><i class='bx bxl-gmail' ></i>
+			</div>
+			<div class="input-field">
+				<input type="number" placeholder="Age" id="age" name="age" min="18" required><i class='bx bxs-calendar' ></i>
+			</div>
+			<div class="input-field">
+				<input type="password" placeholder="Password" id="password" name="password" required pattern=".{6,}"title="min 6 "><i class='bx bxs-lock-alt' ></i>
+			</div>
+			<div class="input-field">
+				<input type="password" placeholder="Confirm Password" id="confirm_password" name="confirm_password" required><i class='bx bxs-lock-alt' ></i>
+			</div>
+		</div>
+		<button type="submit" class="button" name="submit" value="submit">Register</button>
+		<div class="tologin">
+				<a href="login.php">To Login</a><br>
+			</div>
+	</form>
+</div>
+</body>
+
+</html>
+
+
+<?php
+
+$conn=mysqli_connect("localhost","root","","cms");
+if (!$conn) 
+{
+	die("Connection failed: " . mysqli_connect_error());
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('login.jpg');
-    background-size: cover;
-    background-position: center;
+if(isset($_POST['submit']))
+{
+	$name = $_POST['name'];
+	$age = $_POST['age'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	$confirm_password = $_POST['confirm_password'];
+	$_SESSION['email'] = "$email";
+
+	if ($password != $confirm_password)
+	{
+		echo "<script>alert('Password do not match')</script>";
+	}
+	else 
+	{
+	
+		$sql="insert into user (uname,pass,email,age) values ('$name','$password','$email',$age)";
+
+
+		$n=mysqli_query($conn,$sql);
+		if($n>0) 
+		{
+			echo "<script>alert('SIGN UP SUCCESSFUL')</script>";
+		} 
+		else 
+		{
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+	}
 }
 
-.signup{
-    width: 750px;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,.2);
-    box-shadow: 0 0 10px rgba(0 ,0 ,0, .2);
-    backdrop-filter: blur(20px);
-    border-radius: 10px;
-    color: white;
-    padding: 40px 35px 55px;
-    margin: 0 10px;
-}
- 
-.signup h1{
-    font: 36px;
-    text-align: center;
-    margin-bottom: 20px; 
-}
 
-.signup .input-box{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
 
-.input-box .input-field{
-    position: relative;
-    height: 50px;
-    width: 48%;
-    margin: 13px 0;
-} 
+mysqli_close($conn);
+//echo"<a href='login.php'>TOLOGIN</a>";
+?>
 
-.input-box .input-field input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,.2);
-    outline: none;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 6px;
-    padding: 15px 15px 15px 40px;
-}
-
-.input-box input::placeholder {
-    color: white;
-}
-
-.input-box .input-field i{
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
-
-.signup .button{
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0 ,0 ,0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
-}
-
-@media (max-width: 576px){
-    .input-box .input-field{
-        width: 100%;
-        margin: 10px 0;
-    }
-}
-
-.signup .tologin {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 20px;
-}
-
-.tologin a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.tologin a:hover {
-    text-decoration: underline;
-}
