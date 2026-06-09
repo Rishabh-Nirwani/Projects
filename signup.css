@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign in </title>
+	<link rel="stylesheet" href="style.css">
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div class="login">
+		<h1>Login</h1>
+		<form method="POST" action="login.php">
+			<div class="input-box">
+				<label for="username">Username:</label>
+				<input type="text" id="username" name="username" placeholder="Username" required><i class='bx bxs-user'></i><br><br>
+			</div>
+			<div class="input-box">
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" placeholder="Password" required><i class='bx bxs-lock-alt'></i><br><br>
+			</div>
+				<button type="submit" class="button" name="a1">Login</button><br>
+			<div class="register">
+				<p>Don't have an account?<a href="signup.php">Signup</a></p><br>
+			</div>
+			<div class="admin">
+				<a href="admin.php">Admin login</a><br>
+			</div>
+		</form>
+	</div>
+
+
+</body>
+
+</html>
+
+<?php
+if (isset($_POST['a1'])) {
+	$us = $_POST['username'];
+	$ps = $_POST['password'];
+
+	$con = mysqli_connect("localhost", "root", "", "cms");
+	$q = "SELECT * FROM user WHERE uname='$us' and pass='$ps'";
+	$rs = mysqli_query($con, $q);
+
+	if (mysqli_num_rows($rs) === 1) {
+		if (!($us)) {
+			echo "ENTER USERNAME";
+		} elseif (!($ps)) {
+			echo "ENTER PASSWORD";
+		} else {
+			header("Location: course.html");
+		}
+	} else {
+		echo "INVALID USERNAME AND PASSWORD";
+	}
+	mysqli_close($con);
+}
+?>
