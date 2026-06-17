@@ -1,0 +1,27 @@
+services:
+  app:
+    build: .
+    container_name: course-system
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    container_name: course-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: cms
+      MYSQL_USER: cmsuser
+      MYSQL_PASSWORD: password123 
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./cms.sql:/docker-entrypoint-initdb.d/cms.sql
+
+volumes:
+  mysql_data:
